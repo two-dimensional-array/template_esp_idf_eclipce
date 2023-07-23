@@ -20,11 +20,23 @@ jobs:
       run : |
         git clone --recursive https://github.com/espressif/ESP8266_RTOS_SDK.git
         
+    - name: Restore Cache
+      uses: actions/cache/restore@v3
+      with:
+        path: build/
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        
     - name: Build
       run: |
         ./ESP8266_RTOS_SDK/install.sh
         . ./ESP8266_RTOS_SDK/export.sh
         make
+        
+    - name: Save Cache
+      uses: actions/cache/save@v3
+      with:
+        path: build/
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
   
     - name: Download firmware
       uses: actions/upload-artifact@v3
