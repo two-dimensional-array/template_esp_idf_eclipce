@@ -37,7 +37,7 @@ jobs:
         path: build/
         key: ${{ runner.os }}-build-output
         
-    - name: Restore SDK ENV Cache
+    - name: Restore SDK environment cache
       uses: actions/cache/restore@v3
       id: sdk-env-cache
       with:
@@ -51,7 +51,7 @@ jobs:
         . ./ESP8266_RTOS_SDK/export.sh
         make
       
-    - name: Save SDK ENV Cache
+    - name: Save SDK environment cache
       uses: actions/cache/save@v3
       if: steps.sdk-env-cache.outputs.cache-hit != 'true'
       with:
