@@ -31,7 +31,7 @@ jobs:
         path: ESP8266_RTOS_SDK/
         key: esp8266-rtos-sdk
         
-    - name: Restore Cache
+    - name: Restore Build Cache
       uses: actions/cache/restore@v3
       with:
         path: build/
@@ -43,7 +43,7 @@ jobs:
         . ./ESP8266_RTOS_SDK/export.sh
         make
         
-    - name: Save Cache
+    - name: Save Build Cache
       uses: actions/cache/save@v3
       with:
         path: build/
