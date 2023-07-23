@@ -23,7 +23,7 @@ jobs:
       uses: actions/cache/restore@v3
       with:
         path: build/
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        key: ${{ runner.os }}-build-output
         
     - name: Build
       run: |
@@ -35,7 +35,7 @@ jobs:
       uses: actions/cache/save@v3
       with:
         path: build/
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        key: ${{ runner.os }}-build-output
   
     - name: Download firmware
       uses: actions/upload-artifact@v3
