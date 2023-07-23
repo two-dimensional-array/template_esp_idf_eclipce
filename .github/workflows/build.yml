@@ -45,7 +45,6 @@ jobs:
         key: ${{ runner.os }}-sdk-env
         
     - name: Build with setup env
-      if: steps.sdk-env-cache.outputs.cache-hit != 'true'
       run: |
         ./ESP8266_RTOS_SDK/install.sh
         . ./ESP8266_RTOS_SDK/export.sh
@@ -57,10 +56,6 @@ jobs:
       with:
         path: ~/.espressif/
         key: ${{ runner.os }}-sdk-env
-        
-    - name: Build
-      if: steps.sdk-env-cache.outputs.cache-hit == 'true'
-      run: make
         
     - name: Save Build Cache
       uses: actions/cache/save@v3
