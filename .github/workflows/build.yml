@@ -12,9 +12,7 @@ jobs:
           submodules: 'recursive'
         
     - name: Install packages
-      run: |
-        sudo apt-get update
-        sudo apt-get install gcc git wget make libncurses-dev flex bison gperf python-is-python3
+      run: sudo apt-get install gcc git wget make libncurses-dev flex bison gperf python-is-python3
         
     - name: Download SDK
       run : git clone --recursive https://github.com/espressif/ESP8266_RTOS_SDK.git
