@@ -31,12 +31,6 @@ jobs:
         path: ESP8266_RTOS_SDK/
         key: esp8266-rtos-sdk
         
-    - name: Restore Build Cache
-      uses: actions/cache/restore@v3
-      with:
-        path: build/
-        key: ${{ runner.os }}-build-output
-        
     - name: Restore SDK environment cache
       uses: actions/cache/restore@v3
       id: sdk-env-cache
@@ -56,12 +50,6 @@ jobs:
       with:
         path: ~/.espressif/
         key: ${{ runner.os }}-sdk-env
-        
-    - name: Save Build Cache
-      uses: actions/cache/save@v3
-      with:
-        path: build/
-        key: ${{ runner.os }}-build-output
   
     - name: Download firmware
       uses: actions/upload-artifact@v3
