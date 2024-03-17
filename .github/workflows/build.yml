@@ -43,7 +43,7 @@ jobs:
       run: |
         ./ESP8266_RTOS_SDK/install.sh
         . ./ESP8266_RTOS_SDK/export.sh
-        make
+        make -j -s
       
     - name: Save SDK environment cache
       uses: actions/cache/save@v4
